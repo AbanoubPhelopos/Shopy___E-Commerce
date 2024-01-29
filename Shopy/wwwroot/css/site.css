@@ -1,5 +1,9 @@
+* {
+    font-family: 'Salsa', cursive;
+}
+
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
