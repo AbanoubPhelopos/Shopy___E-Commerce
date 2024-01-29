@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Shopy.Data;
+using Shopy.DataAccess.Data;
 
 #nullable disable
 
-namespace Shopy.Migrations
+namespace Shopy.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
     [Migration("20240129132026_addCategoryTableToDb")]

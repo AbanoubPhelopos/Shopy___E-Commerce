@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Shopy.Migrations
+namespace Shopy.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class addCategoryTableToDb : Migration

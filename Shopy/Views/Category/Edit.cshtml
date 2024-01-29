@@ -3,31 +3,39 @@
     ViewData["Title"] = "Edit";
 }
 
-<form method="post" class="container mt-5">
-    <div asp-validation-summary="All"></div>
-
-    <div class="form-group row mt-6">
-        <label asp-for="Name" class="col-sm-2 col-form-label"></label>
-        <div class="col-sm-10">
-            <input asp-for="Name" class="form-control bg-secondary text-white">
-            <span asp-validation-for="Name" class="text-danger"></span>
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary ml-0 py-3">
+        <div class="row">
+            <div class="text-center col-12">
+                <h1 style="color:darkslategray">Edit Category</h1>
+            </div>
         </div>
     </div>
-    <div class="form-group row mt-4">
-        <label asp-for="DisplayOrder" class="col-sm-2 col-form-label"></label>
-        <div class="col-sm-10">
-            <input asp-for="DisplayOrder" class="form-control bg-secondary text-white">
-            <span asp-validation-for="DisplayOrder" class="text-danger"></span>
-        </div>
+    <div class="card-body p-4">
+        <form method="post" class="container mt-5">
+            <div asp-validation-summary="All"></div>
+            <div class="form-group row">
+                <label for="Name" class="col-sm-2 col-form-label">Name:</label>
+                <div class="col-sm-10">
+                    <input type="text" id="Name" name="Name" asp-for="Name" class="form-control">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="DisplayOrder" class="col-sm-2 col-form-label">Display Order:</label>
+                <div class="col-sm-10">
+                    <input type="number" id="DisplayOrder" name="DisplayOrder" asp-for="DisplayOrder" class="form-control">
+                    <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10 offset-sm-2">
+                    <button type="submit" class="btn btn-primary btn-lg mr-2">
+                        <i class="bi bi-pencil-square"></i> Update
+                    </button>
+                    <a asp-controller="Category" asp-action="Index" class="btn btn-secondary btn-lg">Back to Category</a>
+                </div>
+            </div>
+        </form>
     </div>
-    <div class="form-group row">
-        <div class="col-sm-10 offset-sm-2">
-            <button type="submit" class="btn btn-outline-primary btn-lg mr-2 mt-4">
-                <i class="bi bi-pencil-square">
-                Update
-            </button>
-
-            <a asp-controller="Category" asp-action="Index" class="btn btn-outline-secondary btn-lg mt-4">Back to Category</a>
-        </div>
-    </div>
-</form>
+</div>

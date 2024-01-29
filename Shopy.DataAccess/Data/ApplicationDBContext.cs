@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Shopy.Models;
 
-namespace Shopy.Data
+namespace Shopy.DataAccess.Data
 {
     public class ApplicationDBContext :DbContext
     {

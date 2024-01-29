@@ -2013,4 +2013,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Shopy.DataAccess\Shopy.DataAccess.csproj" />
+    <ProjectReference Include="..\Shopy.Models\Shopy.Models.csproj" />
+    <ProjectReference Include="..\Shopy.Utilities\Shopy.Utilities.csproj" />
+  </ItemGroup>
+
 </Project>

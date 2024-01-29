@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Shopy.DataAccess.Data;
 using Shopy.Models;
 
 namespace Shopy.Controllers

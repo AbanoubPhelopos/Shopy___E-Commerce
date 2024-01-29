@@ -1,48 +1,57 @@
 ﻿@{
-	ViewData["Title"] = "Category";
+    ViewData["Title"] = "Categories";
 }
 @model List<Category>
 
-<a class="btn btn-outline-primary btn-lg mt-8" asp-action="Create">
-	<i class="bi bi-bookmark-plus-fill"></i>
-	Add Category
-</a>
-@if (Model == null || Model.Count == 0)
-{
-    <div class="alert alert-dismissible alert-warning">
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        <h4 class="alert-heading">There is no Category</h4>
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary ml-0 py-3">
+        <div class="row">
+            <div class="text-center col-12">
+                <h1 style="color: darkslategray;">Categories</h1>
+            </div>
+        </div>
     </div>
-}
-else
-{
-    <table class="table table-hover">
-        <thead>
-            <tr class="table-default">
-                <th scope="col">Name</th>
-                <th scope="col">Display Order</th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="table-secondary">
+    <div class="card-body p-4">
+        <div class="mt-4 mb-4">
+            <a class="btn btn-primary btn-lg" asp-action="Create">
+                <i class="bi bi-bookmark-plus-fill"></i> Add Category
+            </a>
+        </div>
 
-                @foreach (var item in Model)
-                {
-                    <td>@item.Name</td>
-                    <td>@item.DisplayOrder</td>
-                    <td>
-                        <a asp-controller="Category" asp-action="Edit" asp-route-id="@item.Id" method="post">
-                            <button type="button" class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i>Edit</button>
-                        </a>
-                        <a asp-controller="Category" asp-action="Delete" asp-route-id="@item.Id" method="post">
-                            <button type="button" class="btn btn-outline-danger"><i class="bi bi-trash3"></i>Delete</button>
-                        </a>
-                    </td>
-                }
-
-            </tr>
-        </tbody>
-    </table>
-}
-
+        @if (Model == null || Model.Count == 0)
+        {
+            <div class="alert alert-warning" role="alert">
+                There are no categories.
+            </div>
+        }
+        else
+        {
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Display Order</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>@item.DisplayOrder</td>
+                            <td>
+                                <a asp-controller="Category" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-primary">
+                                    <i class="bi bi-pencil-square"></i> Edit
+                                </a>
+                                <a asp-controller="Category" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger">
+                                    <i class="bi bi-trash3"></i> Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
