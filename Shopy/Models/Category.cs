@@ -1,7 +1,4 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-
-namespace Shopy.Models
+﻿namespace Shopy.Models
 {
     public class Category
     {
