@@ -1,0 +1,66 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary ml-0 py-3">
+        <h1 class="text-center text-white">Create Product</h1>
+    </div>
+    <div class="card-body p-4">
+        <form method="post" class="container mt-4">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="mb-3 row">
+                <label for="Name" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <input type="text" asp-for="Name" class="form-control">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="Description" class="col-sm-2 col-form-label">Description:</label>
+                <div class="col-sm-10">
+                    <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label asp-for="ListPrice" class="col-sm-2 col-form-label">List Price:</label>
+                <div class="col-sm-10">
+                    <input type="number" asp-for="ListPrice" class="form-control">
+                    <span asp-validation-for="ListPrice" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label asp-for="Price" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <input type="number" asp-for="Price" class="form-control">
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label asp-for="Price50" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <input type="number" asp-for="Price50" class="form-control">
+                    <span asp-validation-for="Price50" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label asp-for="Price100" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <input type="number" asp-for="Price100" class="form-control">
+                    <span asp-validation-for="Price100" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="col-sm-10 offset-sm-2">
+                    <button type="submit" class="btn btn-primary btn-lg mr-2">
+                        <i class="bi bi-bookmark-plus-fill"></i>
+                        Add Product
+                    </button>
+                    <a asp-controller="Category" asp-action="Index" class="btn btn-secondary btn-lg">Back to Categories</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
