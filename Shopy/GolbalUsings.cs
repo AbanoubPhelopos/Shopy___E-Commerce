@@ -1,5 +1,5 @@
 ﻿global using Microsoft.AspNetCore.Mvc;
 global using Shopy.DataAccess.Data;
 global using Microsoft.EntityFrameworkCore;
-global using System.ComponentModel;
-global using System.ComponentModel.DataAnnotations;
+global using Shopy.DataAccess.Repository.IRepository;
+global using Shopy.DataAccess.Repository;

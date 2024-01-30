@@ -1,9 +1,9 @@
-using Microsoft.AspNetCore.Mvc;
 using Shopy.Models;
 using System.Diagnostics;
 
-namespace Shopy.Controllers
+namespace Shopy.Areas.Customer.Controllers
 {
+    [Area("Customer")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

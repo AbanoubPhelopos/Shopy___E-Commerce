@@ -1,18 +1,18 @@
-﻿using Shopy.DataAccess.Data;
-using Shopy.Models;
+﻿using Shopy.Models;
 
-namespace Shopy.Controllers
+namespace Shopy.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoryController : Controller
     {
-        private readonly ApplicationDBContext _dbContext;
-        public CategoryController(ApplicationDBContext dBContext)
+        private readonly IUnitOfWork _unitOfWork;
+        public CategoryController(IUnitOfWork dBContext)
         {
-            _dbContext = dBContext;
+            _unitOfWork = dBContext;
         }
         public IActionResult Index()
         {
-            List<Category> category = _dbContext.categories.ToList();
+            List<Category> category = _unitOfWork.Category.GetAll().ToList();
             return View(category);
         }
         public IActionResult Create()
@@ -34,15 +34,15 @@ namespace Shopy.Controllers
             {
                 return View();
             }
-            _dbContext.categories.Add(category);
-            _dbContext.SaveChanges();
+            _unitOfWork.Category.Add(category);
+            _unitOfWork.Save();
             TempData["success"] = "The employee was created successfully";
             return RedirectToAction("index");
         }
         public IActionResult Edit(int id)
         {
-            Category? category = _dbContext.categories.FirstOrDefault(c=>c.Id== id);
-            if(category == null)
+            Category? category = _unitOfWork.Category.Get(c => c.Id == id);
+            if (category == null)
             {
                 return NotFound();
             }
@@ -63,30 +63,30 @@ namespace Shopy.Controllers
             {
                 return View();
             }
-            _dbContext.categories.Update(category);
-            _dbContext.SaveChanges();
+            _unitOfWork.Category.Update(category);
+            _unitOfWork.Save();
             TempData["success"] = "The employee was updated successfully";
             return RedirectToAction("index");
         }
         public IActionResult Delete(int id)
         {
-            Category? category = _dbContext.categories.FirstOrDefault(c => c.Id == id);
+            Category? category = _unitOfWork.Category.Get(c => c.Id == id); //FirstOrDefault(c => c.Id == id);
             if (category == null)
             {
                 return NotFound();
             }
             return View(category);
         }
-        [HttpPost,ActionName("Delete")]
+        [HttpPost, ActionName("Delete")]
         public IActionResult DeletePost(int id)
         {
-            Category? category = _dbContext.categories.FirstOrDefault(c => c.Id == id);
+            Category? category = _unitOfWork.Category.Get(c => c.Id == id);
             if (category == null)
             {
                 return NotFound();
             }
-            _dbContext.categories.Remove(category);
-            _dbContext.SaveChanges();
+            _unitOfWork.Category.Remove(category);
+            _unitOfWork.Save();
             TempData["success"] = "The employee was deleted successfully";
             return RedirectToAction("index");
         }
