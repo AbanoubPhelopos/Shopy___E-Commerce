@@ -2021,4 +2021,8 @@
     <ProjectReference Include="..\Shopy.Utilities\Shopy.Utilities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Images\Products\" />
+  </ItemGroup>
+
 </Project>

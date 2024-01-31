@@ -13,22 +13,37 @@ namespace Shopy.DataAccess.Repository
         {
             _dbContext = dbContext;
             dbSet = _dbContext.Set<T>();
-
+            _dbContext.products.Include(u => u.CategoryId).Include(u => u.Category);
         }
         public void Add(T item)
         {
             dbSet.Add(item);
         }
 
-        public T Get(Expression<Func<T, bool>> filter)
+        public T Get(Expression<Func<T, bool>> filter, string? includeProparties = null)
         {
-            IQueryable<T> query = dbSet.Where(filter);
+            IQueryable<T> query = dbSet;
+            query = query.Where(filter);
+            if (!string.IsNullOrEmpty(includeProparties))
+            {
+                foreach (var includeProp in includeProparties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProp);
+                }
+            }
             return query.FirstOrDefault();
         }
 
-        public IEnumerable<T> GetAll()
+        public IEnumerable<T> GetAll(string? includeProparties = null)
         {
             IQueryable<T> query = dbSet;
+            if (!string.IsNullOrEmpty(includeProparties))
+            {
+                foreach (var includeProp in includeProparties.Split(new char[] {','},StringSplitOptions.RemoveEmptyEntries)) 
+                {
+                    query=query.Include(includeProp);
+                }
+            }
             return query.ToList();
         }
 

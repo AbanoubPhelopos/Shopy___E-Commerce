@@ -13,7 +13,23 @@ namespace Shopy.DataAccess.Repository
         }
         public void Update(Product product)
         {
-            _dbContext.products.Update(product);
+            var objFromDb =_dbContext.products.FirstOrDefault(p=>p.Id== product.Id);
+            if(objFromDb != null)
+            {
+                objFromDb.Description = product.Description;
+                objFromDb.Name = product.Name;
+                objFromDb.Price = product.Price;
+                objFromDb.ListPrice = product.ListPrice;
+                objFromDb.Price50 = product.Price50;
+                objFromDb.Price100 = product.Price100;
+                objFromDb.CategoryId = product.CategoryId;
+                if (objFromDb.ImageURL != null)
+                {
+                    objFromDb.ImageURL = objFromDb.ImageURL;
+                }
+
+            }
+
         }
     }
 }
