@@ -7,15 +7,17 @@ namespace Shopy.Areas.Customer.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IUnitOfWork _unitOfWork;
+        public HomeController(ILogger<HomeController> logger, IUnitOfWork unitOfWork)
         {
             _logger = logger;
+            _unitOfWork = unitOfWork;
         }
-
+        [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            var products = _unitOfWork.Product.GetAll(includeProparties: "Category");
+            return View(products);
         }
 
         public IActionResult Privacy()

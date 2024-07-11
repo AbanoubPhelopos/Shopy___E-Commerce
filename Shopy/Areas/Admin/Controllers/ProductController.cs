@@ -9,9 +9,9 @@ namespace Shopy.Areas.Admin.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IWebHostEnvironment _webHostEnvironment;   
-        public ProductController(IUnitOfWork dBContext, IWebHostEnvironment webHostEnvironment)
+        public ProductController(IUnitOfWork unitOfWork, IWebHostEnvironment webHostEnvironment)
         {
-            _unitOfWork = dBContext;
+            _unitOfWork = unitOfWork;
             _webHostEnvironment = webHostEnvironment;
 
         }
@@ -30,7 +30,6 @@ namespace Shopy.Areas.Admin.Controllers
                     Value = u.Id.ToString()
                 }),
                 product = new Product()
-         
             };
             if (Id == 0 || Id == null)
             {
@@ -95,7 +94,6 @@ namespace Shopy.Areas.Admin.Controllers
             }
             
         }
-        
         
         #region API CALLs
         [HttpGet]

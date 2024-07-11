@@ -17,7 +17,9 @@ namespace Shopy.DataAccess.Repository
             if(objFromDb != null)
             {
                 objFromDb.Description = product.Description;
-                objFromDb.Name = product.Name;
+                objFromDb.Title = product.Title;
+                objFromDb.ISBN = product.ISBN;
+                objFromDb.Auther = product.Auther;
                 objFromDb.Price = product.Price;
                 objFromDb.ListPrice = product.ListPrice;
                 objFromDb.Price50 = product.Price50;

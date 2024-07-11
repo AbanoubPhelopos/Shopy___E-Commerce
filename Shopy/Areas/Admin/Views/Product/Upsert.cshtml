@@ -10,7 +10,6 @@
     }
 }
 }
-
 <div class="card shadow border-0 mt-4">
     <div class="card-header bg-secondary ml-0 py-3">
         <h1 class="text-center text-white">@((Model.product.Id != 0) ? "Update" : "Create") Product</h1>
@@ -23,13 +22,23 @@
             <div class="row">
                 <div class="col-9">
                     <div class="mb-3">
-                        <label asp-for="product.Name" class="form-label"></label>
-                        <input type="text" asp-for="product.Name" class="form-control">
-                        <span asp-validation-for="product.Name" class="text-danger"></span>
+                        <label asp-for="product.Title" class="form-label"></label>
+                        <input type="text" asp-for="product.Title" class="form-control">
+                        <span asp-validation-for="product.Title" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
                         <label asp-for="product.Description" class="form-label">Description:</label>
                         <textarea asp-for="product.Description" class="form-control" rows="4"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="product.ISBN" class="form-label"></label>
+                        <input type="text" asp-for="product.ISBN" class="form-control">
+                        <span asp-validation-for="product.ISBN" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="product.Auther" class="form-label"></label>
+                        <input type="text" asp-for="product.Auther" class="form-control">
+                        <span asp-validation-for="product.Auther" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
                         <label asp-for="product.ListPrice" class="form-label">List Price:</label>

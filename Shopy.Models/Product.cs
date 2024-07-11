@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Security.AccessControl;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,9 +16,13 @@ namespace Shopy.Models
         [Required]
         public int Id { get; set; }
         [Required]
-        public string Name { get; set; } = string.Empty;
+        public string Title { get; set; }
         [Required]
-        public string Description { get; set; }= string.Empty;
+        public string Description { get; set; }
+        [Required]
+        public string ISBN { get; set; }
+        [Required]
+        public string Auther { get; set; }
         [Required]
         [Range(1,1000)]
         [Display(Name= "List Price")]

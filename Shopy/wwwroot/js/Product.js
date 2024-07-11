@@ -8,10 +8,10 @@ function loadDataTable() {
     dataTable = $('#tblData').DataTable({
         "ajax": { url: '/admin/Product/getall' },
         "columns": [
-            { data: 'name', "width": "20%" },
-            { data: 'description', "width": "20%" },
+            { data: 'title', "width": "20%" },
+            { data: 'auther', "width": "20%" },
             { data: 'price', "width": "10%" },
-            { data: 'listPrice', "width": "10%" }, // Update to 'listPrice'
+            { data: 'listPrice', "width": "10%" },
             { data: 'category.name', "width": "20%" },
             {
                 data: 'id', // Update to 'id' for the 'Id' column
