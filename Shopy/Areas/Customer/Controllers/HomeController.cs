@@ -19,6 +19,11 @@ namespace Shopy.Areas.Customer.Controllers
             var products = _unitOfWork.Product.GetAll(includeProparties: "Category");
             return View(products);
         }
+        public IActionResult Details(int id)
+        {
+            Product product = _unitOfWork.Product.Get(u => u.Id == id, includeProparties: "Category");
+            return View(product);
+        }
 
         public IActionResult Privacy()
         {
