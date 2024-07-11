@@ -7,9 +7,9 @@ namespace Shopy.DataAccess.Repository
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        private readonly ApplicationDBContext _dbContext;
+        private readonly ApplicationDbContext _dbContext;
         internal DbSet<T> dbSet;
-        public Repository(ApplicationDBContext dbContext)
+        public Repository(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
             dbSet = _dbContext.Set<T>();

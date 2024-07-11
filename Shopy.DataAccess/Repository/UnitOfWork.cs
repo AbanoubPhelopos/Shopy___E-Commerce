@@ -6,11 +6,11 @@ namespace Shopy.DataAccess.Repository
 {
     public class UnitOfWork : IUnitOfWork 
     {
-        private readonly ApplicationDBContext _dbContext;
+        private readonly ApplicationDbContext _dbContext;
         public ICategoryRepository Category {  get; private set; }
         public IProductRepository Product {  get; private set; }
 
-        public UnitOfWork(ApplicationDBContext dbContext) 
+        public UnitOfWork(ApplicationDbContext dbContext) 
         {
             _dbContext = dbContext;
             Category=new CategoryRepository(_dbContext);

@@ -6,8 +6,8 @@ namespace Shopy.DataAccess.Repository
 {
     public class CategoryRepository : Repository<Category>, ICategoryRepository
     {
-        private readonly ApplicationDBContext _dbContext;
-        public CategoryRepository(ApplicationDBContext dbContext) : base(dbContext)
+        private readonly ApplicationDbContext _dbContext;
+        public CategoryRepository(ApplicationDbContext dbContext) : base(dbContext)
         {
             _dbContext = dbContext;
         }

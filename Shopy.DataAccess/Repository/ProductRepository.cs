@@ -6,8 +6,8 @@ namespace Shopy.DataAccess.Repository
 {
     public class ProductRepository : Repository<Product>, IProductRepository
     {
-        private readonly ApplicationDBContext _dbContext;
-        public ProductRepository(ApplicationDBContext dbContext) : base(dbContext)
+        private readonly ApplicationDbContext _dbContext;
+        public ProductRepository(ApplicationDbContext dbContext) : base(dbContext)
         {
             _dbContext = dbContext;
         }
