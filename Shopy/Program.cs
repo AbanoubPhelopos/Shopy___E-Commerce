@@ -14,6 +14,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<App
 
 // Register UnitOfWork
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
@@ -31,6 +32,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 // Configure the default route
+app.MapRazorPages();
 app.MapControllerRoute(
     name: "default",
     pattern: "{area=Customer}/{controller=Home}/{action=Index}/{id?}");
