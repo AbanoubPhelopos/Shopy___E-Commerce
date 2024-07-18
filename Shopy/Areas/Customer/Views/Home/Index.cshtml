@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Product>
+﻿@using System.Collections.Specialized
+@model IEnumerable<Product>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -10,7 +11,7 @@
             <div class="row p-2">
                 <div class="col-12 p-1">
                     <div class="card border-0 p-3 shadow  border-top border-5 rounded" style="height: 450px;">
-                        <img src="@product.ImageURL" class="card-img-top rounded" style="height: 200px" />
+                        <img src="@product.ImageURL" class="card-img-top rounded dynamic-img" style="height: auto;" />
                         <div class="card-body pb-0">
                             <div class="pl-1">
                                 <p class="card-title h5 text-dark opacity-75 text-uppercase text-center">@product.Title</p>
@@ -34,7 +35,7 @@
                         </div>
                         <div>
                             <a asp-action="Details"
-                               asp-route-productId="@product.Id"
+                               asp-route-id="@product.Id"
                                class="btn btn-primary bg-gradient border-0 form-control">
                                 Details
                             </a>
@@ -45,3 +46,28 @@
         </div>
     }
 </div>
+
+@section Scripts
+{
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const images = document.querySelectorAll('.dynamic-img');
+        images.forEach(img => {
+            function adjustHeight() {
+                if (img.naturalHeight > 200) {
+                    img.style.height = '200px';
+                    img.style.objectFit = 'cover'; // to maintain aspect ratio
+                    img.style.objectPosition = 'top'; // align the image to the top
+                }
+            }
+            // If the image is already loaded (cached), adjust the height immediately
+            if (img.complete) {
+                adjustHeight();
+            } else {
+                // Otherwise, adjust the height when it loads
+                img.onload = adjustHeight;
+            }
+        });
+    });
+</script>
+}
