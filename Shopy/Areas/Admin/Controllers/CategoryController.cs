@@ -1,8 +1,11 @@
-﻿using Shopy.Models;
+﻿using Microsoft.AspNetCore.Authorization;
+using Shopy.Models;
+using Shopy.Utilities;
 
 namespace Shopy.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = StaticDetails.RoleAdmin)]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
